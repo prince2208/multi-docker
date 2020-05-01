@@ -11,7 +11,7 @@ script:
 after_success:
   - docker build -t prince2208/multi-client ./client
   - docker build -t prince2208/multi-nginx ./nginx
-  - dokcer build -t prince2208/multi-server ./server
+  - docker build -t prince2208/multi-server ./server
   - docker build -t prince2208/multi-worker ./worker
   #Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
