@@ -6,7 +6,7 @@ before_install:
   - docker build -t prince2208/react-test -f ./client/Dockerfile.dev .
 
 script:
-  - docker run prince2208/react-test npm test  -- --coverage
+  - docker run -e CI=true  prince2208/react-test npm test  -- --coverage
 
 after_success:
   - docker build -t prince2208/multi-client ./client
@@ -15,3 +15,8 @@ after_success:
   - docker build -t prince2208/multi-worker ./worker
   #Login to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+ #Push the image to Docker Hub
+  - docker push prince2208/multi-client
+  - docker push prince2208/multi-nginx
+  - docker push prince2208/multi-server
+  - docker push prince2208/multi-worker
