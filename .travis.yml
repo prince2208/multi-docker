@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t prince2208/react-test -f ./client/Dockerfile.dev .
+  - docker build -t prince2208/react-test -f ./Dockerfile.dev .
 
 script:
   - docker run -e CI=true  prince2208/react-test npm test  -- --coverage
