@@ -2,10 +2,10 @@ FROM node:alpine
 
 WORKDIR '/app'
 
-COPY ./package.json ./
+COPY /home/osadmin/docker/complex/client/package.json ./
 
 RUN npm install
 
-COPY ./ ./
+COPY /home/osadmin/docker/complex/client/ ./
 
 CMD ["npm", "run", "start"]
